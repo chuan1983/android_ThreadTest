@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
     private TextView tv;
     private UIHandler handler;
@@ -34,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
             for(int i=0; i<10; i++){
                 Log.d("bread","i="+i);
                 //tv.setText("i="+i);
+
+                Message mesg = new Message();
+                Bundle data = new Bundle();
+                mesg.setData(data);
+                handler.sendMessage(mesg);
+                data.putInt("i",i);
+
                 handler.sendEmptyMessage(i);
                 try {
                     Thread.sleep(200);
@@ -43,10 +52,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+ 
+
     private class UIHandler extends Handler{
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            Bundle data = msg.getData();
+            int i = data.getInt("i");
             tv.setText("i=" + msg.what);
         }
     }
