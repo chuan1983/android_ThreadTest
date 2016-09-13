@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
         tv = (TextView)findViewById(R.id.test_view);
     }
     public void testBu1(View v){
-
+    Thread t1 = new Thread1();
+        t1.start();
     }
     public void testBu2(View v){
 
@@ -27,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             for(int i=0; i<10; i++){
                 Log.d("bread","i="+i);
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                }
             }
         }
     }
