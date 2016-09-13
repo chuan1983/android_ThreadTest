@@ -41,14 +41,13 @@ public class MainActivity extends AppCompatActivity {
             for(int i=0; i<10; i++){
                 Log.d("bread","i="+i);
                 //tv.setText("i="+i);
+                //handler.sendEmptyMessage(i);
 
                 Message mesg = new Message();
                 Bundle data = new Bundle();
                 mesg.setData(data);
                 handler.sendMessage(mesg);
                 data.putInt("i",i);
-
-                handler.sendEmptyMessage(i);
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             Log.d("brad", "i=" + i++);
+            tv.setText("i=" + i++);
         }
     }
 
