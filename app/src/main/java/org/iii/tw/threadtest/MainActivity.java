@@ -52,7 +52,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
- 
+    private class MyTask extends TimerTask{
+        private int i ;
+        @Override
+        public void run() {
+            Log.d("brad", "i=" + i++);
+        }
+    }
 
     private class UIHandler extends Handler{
         @Override
