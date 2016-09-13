@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             for(int i=0; i<10; i++){
                 Log.d("bread","i="+i);
+                tv.setText("i="+i);
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
