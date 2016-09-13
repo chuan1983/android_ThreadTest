@@ -5,15 +5,18 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.ActionMenuItemView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tv;
     private UIHandler handler;
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +25,15 @@ public class MainActivity extends AppCompatActivity {
 
         tv = (TextView)findViewById(R.id.test_view);
         handler = new UIHandler();
+        timer = new Timer();
     }
     public void testBu1(View v){
     Thread t1 = new Thread1();
         t1.start();
     }
     public void testBu2(View v){
-
+    MyTask mt1 = new MyTask();
+        timer.schedule(mt1,200,200);
     }
     private class Thread1 extends Thread{
         @Override
