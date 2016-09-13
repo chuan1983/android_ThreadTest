@@ -1,5 +1,8 @@
 package org.iii.tw.threadtest;
 
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                 }
             }
+        }
+    }
+
+    private class UIHandler extends Handler{
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
         }
     }
 }
